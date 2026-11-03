@@ -1,4 +1,4 @@
-export type Rarity = "common" | "uncommon" | "rare" | "legendary"
+export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
 export interface card {
     name: string,
     rarity: Rarity,
@@ -105,7 +105,23 @@ const vines: card = {
     image: ""
 }
 
-const uncommon: card[] = [werewolf,jackolantern,puppet,viper,vines]
+const drinkMe: card = {
+    name: "Drink Me",
+    rarity: "uncommon",
+    income: 7,
+    cooldown: 1,
+    image: ""
+}
+
+const eatMe: card = {
+    name: "Eat Me",
+    rarity: "uncommon",
+    income: 7,
+    cooldown: 1,
+    image: ""
+}
+
+const uncommon: card[] = [werewolf,jackolantern,puppet,viper,vines, drinkMe, eatMe]
 
 const frankenstein: card = {
     name: "Frankenstein",
@@ -131,9 +147,41 @@ const hauntedHouse: card = {
     image: ""
 }
 
+const dinosaur: card = {
+    name: "Dinosaur",
+    rarity: "rare",
+    income: 18,
+    cooldown: 1,
+    image: ""
+}
 
+const shark: card = {
+    name: "Shark",
+    rarity: "rare",
+    income: 19,
+    cooldown: 1,
+    image: ""
+}
 
-const rare: card[] = [frankenstein,mummy,hauntedHouse]
+const rare: card[] = [frankenstein,mummy,hauntedHouse, dinosaur, shark]
+
+const candy: card = {
+    name: "Candy",
+    rarity: "epic",
+    income: 25,
+    cooldown: 1,
+    image: ""
+}
+
+const inflatable: card = {
+    name: "Inflatable",
+    rarity: "epic",
+    income: 27,
+    cooldown: 1,
+    image: ""
+}
+
+const epic: card[] = [candy,inflatable]
 
 const darkEye: card = {
     name: "Dark Eye",
@@ -143,8 +191,16 @@ const darkEye: card = {
     image: ""
 }
 
-const legendary: card[] = [darkEye]
+const dracula: card = {
+    name: "Dracula",
+    rarity: "legendary",
+    income: 55,
+    cooldown: 1,
+    image: ""
+}
 
-export const cards: card[] = [...commons,...uncommon,...rare,...legendary]
+const legendary: card[] = [darkEye, dracula]
 
-export const cardRarities = {common:commons,uncommon:uncommon,rare:rare,legendary:legendary}
+export const cards: card[] = [...commons,...uncommon,...rare,...epic,...legendary]
+
+export const cardRarities = {common:commons,uncommon:uncommon,rare:rare,epic:epic, legendary:legendary}

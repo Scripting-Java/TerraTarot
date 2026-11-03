@@ -95,3 +95,11 @@ Tentative Ideas:
 ## Art
 - Halloween theme w/ dark organge, purple(highlights/accents), and black
 - Vectorpea
+
+
+## Todo while I work
+- Add roll max button which returns highest tier(s) after the max rolls the player can do. It only fills null slots or the slot selected.
+- Roll max button can be changed via a text input to input a specific amount of rolls.
+- Definitely make money formatters
+- Pity system(Rare+ Guranteed)
+- Epic Cards [X]
