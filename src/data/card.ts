@@ -1,0 +1,148 @@
+export type Rarity = "common" | "uncommon" | "rare" | "legendary"
+export interface card {
+    name: string,
+    rarity: Rarity,
+    income: number,
+    cooldown: number,
+    image: string
+}
+
+const skeleton: card = {
+    name: "Skeleton",
+    rarity: "common",
+    income: 1,
+    cooldown: 1,
+    image: "temp",
+}
+
+const ghost: card = {
+    name: "Ghost",
+    rarity: "common",
+    income: 1,
+    cooldown: 1,
+    image: "temp",
+}
+
+const zombie: card = {
+    name: "Zombie",
+    rarity: "common",
+    income: 1,
+    cooldown: 1,
+    image: "temp",
+}
+
+const vampire: card = {
+    name: "Vampire",
+    rarity: "common",
+    income: 1,
+    cooldown: 1,
+    image: "temp",
+}
+
+const witch: card = {
+    name: "Witch",
+    rarity: "common",
+    income: 1.1,
+    cooldown: 1,
+    image: "temp",
+}
+
+const blackCat: card = {
+    name: "Black Cat",
+    rarity: "common",
+    income: 1.1,
+    cooldown: 1,
+    image: "temp",
+}
+
+const bat: card = {
+    name: "Bat",
+    rarity: "common",
+    income: 1.2,
+    cooldown: 1,
+    image: "temp",
+}
+
+const commons: card[] = [skeleton,ghost,zombie,vampire,witch,blackCat,bat]
+
+const werewolf: card = {
+    name: "Werewolf",
+    rarity: "uncommon",
+    income: 5,
+    cooldown: 1,
+    image: ""
+}
+
+const jackolantern: card = {
+    name: "Jack-O-Lantern",
+    rarity: "uncommon",
+    income: 6,
+    cooldown: 1,
+    image: ""
+}
+
+const puppet: card = {
+    name: "Puppet",
+    rarity: "uncommon",
+    income:6 ,
+    cooldown: 1,
+    image: ""
+}
+
+const viper: card = {
+    name: "Viper",
+    rarity: "uncommon",
+    income: 6,
+    cooldown: 1,
+    image: ""
+}
+
+const vines: card = {
+    name: "Vines",
+    rarity: "uncommon",
+    income: 7,
+    cooldown: 1,
+    image: ""
+}
+
+const uncommon: card[] = [werewolf,jackolantern,puppet,viper,vines]
+
+const frankenstein: card = {
+    name: "Frankenstein",
+    rarity: "rare",
+    income: 12,
+    cooldown: 1,
+    image: ""
+}
+
+const mummy: card = {
+    name: "Mummy",
+    rarity: "rare",
+    income: 15,
+    cooldown: 1,
+    image: ""
+}
+
+const hauntedHouse: card = {
+    name: "Haunted House",
+    rarity: "rare",
+    income: 18,
+    cooldown: 1,
+    image: ""
+}
+
+const rare: card[] = [frankenstein,mummy,hauntedHouse]
+
+const darkEye: card = {
+    name: "Dark Eye",
+    rarity: "legendary",
+    income: 50,
+    cooldown: 1,
+    image: ""
+}
+
+const legendary: card[] = [darkEye]
+
+export const cards: card[] = [...commons,...uncommon,...rare,...legendary]
+
+export const cardRarities = {common:commons,uncommon:uncommon,rare:rare,legendary:legendary}

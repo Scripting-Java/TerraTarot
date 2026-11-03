@@ -53,7 +53,6 @@ Uncommon:
 |Viper|Uncommon|$6|
 |Vines|Uncommon|$7|
 
-
 Rare:
 |Card|Rarity|Initial Money Made|
 |:---|:---:|---:|
@@ -65,7 +64,6 @@ Legendary:
 |Card|Rarity|Initial Money Made|
 |:---|:---:|---:|
 |Dark Eyeball(Lego movie eye)|Legendary|$50|
-
 
 ## Rolling
 They see me rolling...
@@ -97,8 +95,3 @@ Tentative Ideas:
 ## Art
 - Halloween theme w/ dark organge, purple(highlights/accents), and black
 - Vectorpea
-
-
-
-
-
