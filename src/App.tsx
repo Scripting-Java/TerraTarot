@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import Card from './components/card/card'
 import { cards } from './data/card'
 import './App.css'
+import CardSlot from './components/cardSlot/cardSlot'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const slots = [cards[0],null,cards[7],null]
   return (
-    <Card card={cards[0]}></Card>
+    <CardSlot slots={slots}></CardSlot>
   )
 }
 
