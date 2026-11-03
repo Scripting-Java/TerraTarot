@@ -1,5 +1,5 @@
 import type { card } from "../data/card";
-import roll from "../data/roll";
+import { roll } from "../data/roll";
 
 function handleRoll(slots:(card|null)[], slot:number):(card|null)[]{
     const newSlots = [...slots]

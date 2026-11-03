@@ -7,6 +7,6 @@
 }
 
 .selected{
-    outline: 3px solid orange;
+    outline: 3px solid rgb(255, 145, 0);
     border-radius: 10px;
 }

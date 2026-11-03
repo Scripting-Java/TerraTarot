@@ -10,10 +10,13 @@ function App() {
   const [slotIndex, setSlotIndex] = useState(0) // index
   function rollSlot() {
     setSlots(handleRoll(slots, slotIndex))
+    
   }
 
   return (
     <>
+      <h1>Terra Tarot</h1>
+      <p>Roll spooky characters to make money</p>
       <button onClick={rollSlot}>Roll</button>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
     </>

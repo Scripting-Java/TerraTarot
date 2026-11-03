@@ -1,7 +1,7 @@
-import roll from "../data/roll";
+import { roll } from "../data/roll";
 import type { card } from "../data/card";
-function loadGame(): (card|null)[]{
-    const cards: (card|null)[] = []
+function loadGame(): (card | null)[] {
+    const cards: (card | null)[] = []
     cards.push(roll())
     cards.push(roll())
     cards.push(null)
