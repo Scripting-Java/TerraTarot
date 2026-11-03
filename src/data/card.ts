@@ -131,6 +131,8 @@ const hauntedHouse: card = {
     image: ""
 }
 
+
+
 const rare: card[] = [frankenstein,mummy,hauntedHouse]
 
 const darkEye: card = {

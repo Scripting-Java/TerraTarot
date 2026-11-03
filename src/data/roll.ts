@@ -1,18 +1,21 @@
 import type { card } from "./card";
 import { cardRarities } from "./card";
-
+const commonChance = 0.65
+const uncommonChance = 0.25
+const rareChance = 0.09
+const legendaryChance = 0.01
 function roll():card{
-    const roll = Math.random()
+    const roll1 = Math.random()
     let card:card 
-    if (roll <= 0.65) {
+    if (roll1 <= commonChance) {
         const roll2 = Math.floor(Math.random()*cardRarities.common.length)
         card = cardRarities.common[roll2]
     }
-    else if (roll <= 0.9) {
+    else if (roll1 <= commonChance+uncommonChance) {
         const roll2 = Math.floor(Math.random()*cardRarities.uncommon.length)
         card = cardRarities.uncommon[roll2]
     }
-    else if (roll <= 0.99) {
+    else if (roll1 <= commonChance+rareChance+uncommonChance) {
         const roll2 = Math.floor(Math.random()*cardRarities.rare.length)
         card = cardRarities.rare[roll2]
     }
