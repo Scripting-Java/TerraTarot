@@ -22,3 +22,5 @@ function roll():card{
     }
     return card
 }
+
+export default roll

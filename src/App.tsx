@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { cards } from './data/card'
+import type { card } from './data/card'
 import './App.css'
 import CardSlot from './components/cardSlot/cardSlot'
+import loadGame from './utils/loadGame'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const slots = [cards[0],null,cards[7],null]
+  const [slots, setSlots] = useState<(card|null)[]>(loadGame())
+  const [slot,setSlot] = useState(0)
+  
   return (
-    <CardSlot slots={slots}></CardSlot>
+    <CardSlot slots={slots} slot = {slot} setSlot={setSlot}></CardSlot>
   )
 }
 
