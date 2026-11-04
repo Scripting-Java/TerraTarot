@@ -49,4 +49,4 @@ function rollPity(): card {
     return card
 }
 
-export {roll,rollPity}
+export { roll, rollPity }

@@ -115,3 +115,4 @@ Show this in a table later I guess
 - Pity system(Rare+ Guranteed) [X]
 - Epic Cards [X]
 - Info box for statistics and pull chances(at the end though)
+- Make the roll pity button bigger and more fancy like gacha games. Otherwise, it'll revert to a still customly styled fancy roll button!
