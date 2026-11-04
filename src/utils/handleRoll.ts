@@ -9,4 +9,6 @@ function handleRoll(slots: (card | null)[], slot: number, pity: boolean): (card 
         newSlots[slot] = roll()
     return newSlots
 }
+
+
 export default handleRoll
