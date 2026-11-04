@@ -1,4 +1,5 @@
 export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
+
 export interface card {
     name: string,
     rarity: Rarity,
@@ -12,7 +13,7 @@ const skeleton: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const ghost: card = {
@@ -20,7 +21,7 @@ const ghost: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const zombie: card = {
@@ -28,7 +29,7 @@ const zombie: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const vampire: card = {
@@ -36,7 +37,7 @@ const vampire: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const witch: card = {
@@ -44,7 +45,7 @@ const witch: card = {
     rarity: "common",
     income: 1.1,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const blackCat: card = {
@@ -52,7 +53,7 @@ const blackCat: card = {
     rarity: "common",
     income: 1.1,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const bat: card = {
@@ -60,7 +61,7 @@ const bat: card = {
     rarity: "common",
     income: 1.2,
     cooldown: 1,
-    image: "temp",
+    image: "",
 }
 
 const commons: card[] = [skeleton,ghost,zombie,vampire,witch,blackCat,bat]

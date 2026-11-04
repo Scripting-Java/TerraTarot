@@ -4,12 +4,14 @@ import './App.css'
 import CardSlot from './components/cardSlot/cardSlot'
 import loadGame from './utils/loadGame'
 import handleRoll from './utils/handleRoll'
-
+import {getRollCost, start} from './data/money'
 
 function App() {
   const [slots, setSlots] = useState<(card | null)[]>(loadGame())
   const [slotIndex, setSlotIndex] = useState(0)
   const [rollNum, setRollNum] = useState(0)
+  const [totRolls, setTotRolls] = useState(0)
+  const [money, setMoney] = useState(start)
 
   function rollSlot() {
     const pity = rollNum < 49
@@ -25,33 +27,36 @@ function App() {
       setRollNum(0)
       setSlots(handleRoll(slots, slotIndex, true))
     }
+    setTotRolls(totRolls + 1)
   }
   function rollAll() {
     let newSlots = [...slots]
     let tempRollNum = rollNum
-
+    let tempTotRoll = totRolls
 
     for (let i = 0; i < 4; i++) {
       const pity = tempRollNum < 49
       if (pity) {
         newSlots = handleRoll(newSlots, i, false)
-        setSlots(newSlots)
         tempRollNum++
         if (newSlots[i]?.rarity === "epic" || newSlots[i]?.rarity === "legendary")
-          tempRollNum=0
+          tempRollNum = 0
       }
       else {
-        tempRollNum=0
-        setSlots(handleRoll(newSlots, i, true))
+        tempRollNum = 0
+        newSlots = handleRoll(newSlots, i, true)
       }
+      tempTotRoll++
     }
+    setSlots(newSlots)
+    setTotRolls(tempTotRoll)
     setRollNum(tempRollNum)
   }
 
   return (
     <>
       <h1>Terra Tarot</h1>
-      <p>Roll spooky characters to make money</p>
+      <p>Roll spooky characters to make pumpkins</p>
       <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
       <h3>All statistics/chances are visible in the side menu(in progress)</h3>
       <button onClick={rollSlot}>Roll</button>
