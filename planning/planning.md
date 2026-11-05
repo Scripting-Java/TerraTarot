@@ -108,8 +108,6 @@ Tentative Ideas:
 Show this in a table later I guess
  
 ## New Ideas/ Todolist
-- Add roll max button which returns highest tier(s) after the max rolls the player can do. It only fills null slots or the slot selected. - I don't want to do this
-- Roll max button can be changed via a text input to input a specific amount of rolls.[X]
 - Info box for statistics and pull chances(at the end though)
 - Make the roll pity button bigger and more fancy like gacha games. Otherwise, it'll revert to a still customly styled fancy roll button!
 - Make a reset roll cost in shop once I make shop which will reset roll cost to default rates(1st roll rate) for $2.5k

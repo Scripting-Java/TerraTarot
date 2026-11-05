@@ -1,10 +1,15 @@
 import type { card } from "../data/card";
 
 function canFuse(card1:card|null, card2:card|null){
-    if(card1===null||card2===null)
+    if((card1===null||card2===null))
         return false
     const same = card1.name===card2.name
-    return same
+    let lvCap: boolean
+    if(((card1.fusion??0)<10)&&((card1.fusion??0)<10))
+        lvCap=true
+    else
+        lvCap=false
+    return same&&lvCap
 }
 
 function fuseCards(card1:card, card2: card): card{
