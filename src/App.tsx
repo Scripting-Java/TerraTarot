@@ -17,11 +17,12 @@ function App() {
   const [rollCounter, setRollCounter] = useState(1)
   const rollModes = ["count", "max", "allCount", "allMax"]
   const [rollCount, setRollCount] = useState(1)
+  const [prevRolls, setPrevRolls] = useState(0)
   function rollSlot() {
-    const pity = rollNum < 49
+    const notPity = rollNum < 49
     setPumpkin(pumpkin - getRollCost(totRolls))
     let newSlot
-    if (pity) {
+    if (notPity) {
       newSlot = handleRoll(slots, slotIndex, false)
       setSlots(newSlot)
       setRollNum(rollNum + 1)
@@ -33,6 +34,7 @@ function App() {
       setSlots(handleRoll(slots, slotIndex, true))
     }
     setTotRolls(totRolls + 1)
+    setPrevRolls(totRolls)
   }
   function rollAll() {
     let newSlots = [...slots]
@@ -58,16 +60,17 @@ function App() {
     setTotRolls(tempTotRoll)
     setRollNum(tempRollNum)
     setPumpkin(tempPumpkin)
+    setPrevRolls(totRolls)
   }
   function rollMax() {
     let newSlots = [...slots]
-      let tempRollNum = rollNum
-      let tempTotRoll = totRolls
-      let tempPumpkin = pumpkin
+    let tempRollNum = rollNum
+    let tempTotRoll = totRolls
+    let tempPumpkin = pumpkin
     if (rollMode === "max") {
       while (tempPumpkin >= getRollCost(tempTotRoll)) {
-        const pity = tempRollNum < 49
-        if (pity) {
+        const notPity = tempRollNum < 49
+        if (notPity) {
           newSlots = handleRoll(newSlots, slotIndex, false)
           tempRollNum++
 
@@ -86,11 +89,11 @@ function App() {
       setTotRolls(tempTotRoll)
       setPumpkin(tempPumpkin)
     }
-    else if(rollMode==="count"){
+    else if (rollMode === "count") {
       let i = 0
-      while(i<rollCount && tempPumpkin>=getRollCost(tempTotRoll)){
-        const pity = tempRollNum < 49
-        if (pity) {
+      while (i < rollCount && tempPumpkin >= getRollCost(tempTotRoll)) {
+        const notPity = tempRollNum < 49
+        if (notPity) {
           newSlots = handleRoll(newSlots, slotIndex, false)
           tempRollNum++
 
@@ -110,6 +113,62 @@ function App() {
       setTotRolls(tempTotRoll)
       setPumpkin(tempPumpkin)
     }
+    else if (rollMode === "allCount") {
+      let tempIndex = 0
+      let i = 0
+      while (i < rollCount && tempPumpkin >= getRollCost(tempTotRoll)) {
+        const notPity = tempRollNum < 49
+        if (notPity) {
+          newSlots = handleRoll(newSlots, tempIndex, false)
+          tempRollNum++
+
+          if (newSlots[tempIndex]?.rarity === "epic" || newSlots[tempIndex]?.rarity === "legendary")
+            tempRollNum = 0
+        }
+        else {
+          tempRollNum = 0
+          newSlots = handleRoll(newSlots, tempIndex, true)
+        }
+        if (tempIndex < 3)
+          tempIndex++
+        else
+          tempIndex = 0
+        tempPumpkin -= getRollCost(tempTotRoll)
+        tempTotRoll++
+        i++
+      }
+      setSlots(newSlots)
+      setRollNum(tempRollNum)
+      setTotRolls(tempTotRoll)
+      setPumpkin(tempPumpkin)
+    }
+    else if (rollMode === "allMax") {
+      let tempIndex = 0
+      while (tempPumpkin >= getRollCost(tempTotRoll)) {
+        const notPity = tempRollNum < 49
+        if (notPity) {
+          newSlots = handleRoll(newSlots, tempIndex, false)
+          tempRollNum++
+          if (newSlots[tempIndex]?.rarity === "epic" || newSlots[tempIndex]?.rarity === "legendary")
+            tempRollNum = 0
+        }
+        else {
+          tempRollNum = 0
+          newSlots = handleRoll(newSlots, tempIndex, true)
+        }
+        if (tempIndex < 3)
+          tempIndex++
+        else
+          tempIndex = 0
+        tempPumpkin -= getRollCost(tempTotRoll)
+        tempTotRoll++
+      }
+      setSlots(newSlots)
+      setRollNum(tempRollNum)
+      setTotRolls(tempTotRoll)
+      setPumpkin(tempPumpkin)
+    }
+    setPrevRolls(totRolls)
   }
 
   useEffect(() => {
@@ -125,16 +184,20 @@ function App() {
       <h3>All statistics/chances are visible in the side menu(in progress)</h3>
       <h2>Pumpkin: {formatMoney(pumpkin)}</h2>
       <h2>Lifetime Rolls: {totRolls}</h2>
-
       <div>
         <button onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))}) Pumpkins</button>
         <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
       </div>
-      <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1)}}>{rollMode}</button>
-      {rollMode==="count"||rollMode==="allCount" ?(
-        <input type="number" value={rollCount} onChange={(n)=>setRollCount(Number(n.target.value))}/>
-      ):(null)}
+      <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1) }}>{rollMode}</button>
+      {rollMode === "count" || rollMode === "allCount" ? (
+        <input type="number" value={rollCount} onChange={(n) => setRollCount(Number(n.target.value))} />
+      ) : (null)}
       <button onClick={rollMax}>Roll Max or your condition</button>
+      {rollMode === "count" || rollMode === "allCount" ? (
+        <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
+      ) : (
+      <p>{totRolls - prevRolls} rolls were performed</p>)}
+
       <p>Pity: {rollNum}/50</p>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       <div></div>
