@@ -6,6 +6,7 @@ import loadGame from './utils/loadGame'
 import handleRoll from './utils/handleRoll'
 import { getRollCost, start, getIncomeCards } from './data/money'
 import formatMoney from './utils/moneyFormatter'
+import { fuseCards, canFuse } from './utils/fusion'
 
 function App() {
   const [slots, setSlots] = useState<(card | null)[]>(loadGame())
@@ -170,6 +171,23 @@ function App() {
     }
     setPrevRolls(totRolls)
   }
+  function fuse() {
+    let newSlots = [...slots]
+    for (let i = 0; i < slots.length; i++) {
+      for (let j = i + 1; j < slots.length; j++) {
+        if (canFuse(newSlots[i], newSlots[j])) {
+          const card1 = newSlots[i]
+          const card2 = newSlots[j]
+          if (card1 !=null && card2 != null) {
+            const temp = fuseCards(card1,card2)
+            newSlots[i] = temp
+            newSlots[j] = null
+          }
+        }
+      }
+    }
+    setSlots(newSlots)
+  }
 
   useEffect(() => {
     const int = setInterval(() => { setPumpkin(prev => prev + getIncomeCards(slots)) }, 1000)
@@ -188,15 +206,16 @@ function App() {
         <button onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))}) Pumpkins</button>
         <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
       </div>
+      <button onClick={fuse}>Fuse</button>
       <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollMode}</button>
       {rollMode === "count" || rollMode === "allCount" ? (
-        <input type="number" value={rollCount} onChange={(n) => {setRollCount(Number(n.target.value)), setPrevRolls(totRolls)}} />
+        <input type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
       ) : (null)}
       <button onClick={rollMax}>Roll Max or your condition</button>
       {rollMode === "count" || rollMode === "allCount" ? (
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
-      <p>{totRolls - prevRolls} rolls were performed</p>)}
+        <p>{totRolls - prevRolls} rolls were performed</p>)}
       <p>Pity: {rollNum}/50</p>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       <div></div>

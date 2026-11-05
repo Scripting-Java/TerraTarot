@@ -5,7 +5,8 @@ export interface card {
     rarity: Rarity,
     income: number,
     cooldown: number,
-    image: string
+    image: string,
+    fusion?: number,
 }
 
 const skeleton: card = {

@@ -17,6 +17,7 @@ function Card({ card }: Card) {
                     ):(null)}
                     <h1>{card.name}</h1>
                     <p>{card.rarity}</p>
+                    {card.fusion!=null?(<p>Fusion Level: {card.fusion}</p>):(null)}
                     <div className="money">
                     <img src = {pumpkin} className="pumpkin"></img>
                     <p>{formatMoney(getIncome(card))}/s</p>
