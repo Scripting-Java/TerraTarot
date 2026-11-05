@@ -11,7 +11,7 @@ function fuseCards(card1:card, card2: card): card{
     let temp: card
     const cool1 = card1.cooldown
     const cool2 = card2.cooldown
-    if(cool1>=cool2){
+    if(cool1<=cool2){
     temp = {...card1}
     temp.cooldown = card1.cooldown*0.95
     temp.income = card1.income*1.05
