@@ -1,5 +1,5 @@
 import type { card } from "./card"
-export const start = 100
+export const start = 5
 
 function getRollCost(rolls:number): number{
     if(rolls<100)
@@ -14,9 +14,10 @@ function getIncome(card:card){
     return card.income*1/card.cooldown
 }
 
-function getIncomeCards(cards:card[]): number{
+function getIncomeCards(cards:(card|null)[]): number{
     let money = 0
     for(const card of cards){
+        if(card)
         money+=getIncome(card)
     }
     return money
