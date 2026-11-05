@@ -188,16 +188,15 @@ function App() {
         <button onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))}) Pumpkins</button>
         <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
       </div>
-      <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1) }}>{rollMode}</button>
+      <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollMode}</button>
       {rollMode === "count" || rollMode === "allCount" ? (
-        <input type="number" value={rollCount} onChange={(n) => setRollCount(Number(n.target.value))} />
+        <input type="number" value={rollCount} onChange={(n) => {setRollCount(Number(n.target.value)), setPrevRolls(totRolls)}} />
       ) : (null)}
       <button onClick={rollMax}>Roll Max or your condition</button>
       {rollMode === "count" || rollMode === "allCount" ? (
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
       <p>{totRolls - prevRolls} rolls were performed</p>)}
-
       <p>Pity: {rollNum}/50</p>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       <div></div>
