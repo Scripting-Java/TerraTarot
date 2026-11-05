@@ -178,8 +178,8 @@ function App() {
         if (canFuse(newSlots[i], newSlots[j])) {
           const card1 = newSlots[i]
           const card2 = newSlots[j]
-          if (card1 !=null && card2 != null) {
-            const temp = fuseCards(card1,card2)
+          if (card1 != null && card2 != null) {
+            const temp = fuseCards(card1, card2)
             newSlots[i] = temp
             newSlots[j] = null
           }
@@ -207,11 +207,16 @@ function App() {
         <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
       </div>
       <button onClick={fuse}>Fuse</button>
-      <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollMode}</button>
-      {rollMode === "count" || rollMode === "allCount" ? (
-        <input type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
-      ) : (null)}
-      <button onClick={rollMax}>Roll Max or your condition</button>
+
+      <button onClick={rollMax}>Roll Condition</button>
+      <details>
+        <summary>Condition</summary>
+        <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollMode}</button>
+        {rollMode === "count" || rollMode === "allCount" ? (
+          <input type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
+        ) : (null)}
+      </details>
+
       {rollMode === "count" || rollMode === "allCount" ? (
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
