@@ -24,3 +24,20 @@ body{
 .title{
     font-family: 'Arbutus';
 }
+
+.rollCond{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.rollCond details{
+    position:relative
+}
+.rollCond details[open]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}

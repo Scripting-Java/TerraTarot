@@ -8,7 +8,7 @@ interface Sidebar{
     setShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function Sidebar({show, setShow}: Sidebar){
+function Sidebar({setShow}: Sidebar){
     const [tab, setTab] = useState<"stats"|"shop"|"none">("none")
     function toggle(panel:"stats"|"shop"){
         if(tab===panel)
