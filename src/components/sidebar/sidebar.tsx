@@ -1,10 +1,14 @@
 import { useState } from "react";
 import './sidebar.css'
-import Statbar from "./Statbar"
 import Shopbar from "./Shopbar"
 import { ChartNoAxesColumn, ShoppingBag } from 'lucide-react'
 
-function Sidebar(){
+interface Sidebar{
+    show:boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function Sidebar({show, setShow}: Sidebar){
     const [tab, setTab] = useState<"stats"|"shop"|"none">("none")
     function toggle(panel:"stats"|"shop"){
         if(tab===panel)
@@ -14,9 +18,8 @@ function Sidebar(){
     }
     return(
         <div className="sidebar">
-            <button className="button" onClick={()=>toggle("stats")}><ChartNoAxesColumn size={24}></ChartNoAxesColumn></button>
+            <button className="button" onClick={()=>setShow(prev=>!prev)}><ChartNoAxesColumn size={24}></ChartNoAxesColumn></button>
             <button className="button" onClick ={()=>toggle("shop")}><ShoppingBag size={24}></ShoppingBag></button>
-            {tab==="stats"&&<Statbar />}
             {tab==="shop"&&<Shopbar />}
         </div>
     )

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Arbutus&display=swap');
 .pumpkinImg {
     display: flex;
     align-items: center;
@@ -19,4 +20,7 @@ body{
     display: flex;
     gap:8px;
     max-width: calc(100vw-200px);
+}
+.title{
+    font-family: 'Arbutus';
 }

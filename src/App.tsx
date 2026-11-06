@@ -9,7 +9,7 @@ import formatMoney from './utils/moneyFormatter'
 import { fuseCards, canFuse } from './utils/fusion'
 import pumpkinImg from '../src/assets/pumpkin.png'
 import Sidebar from './components/sidebar/sidebar'
-
+import Statbar from './components/sidebar/Statbar'
 
 function App() {
   const [slots, setSlots] = useState<(card | null)[]>(loadGame())
@@ -22,6 +22,7 @@ function App() {
   const rollModes = ["count", "max", "allCount", "allMax"]
   const [rollCount, setRollCount] = useState(1)
   const [prevRolls, setPrevRolls] = useState(0)
+  const [stats, setStats] = useState(false)
   function rollSlot() {
     const notPity = rollNum < 49
     setPumpkin(pumpkin - getRollCost(totRolls))
@@ -199,7 +200,7 @@ function App() {
 
   return (
     <>
-      <h1>Terra Tarot</h1>
+      <h1 className='title'>Terra Tarot</h1>
       <p>Roll spooky characters to make pumpkins</p>
       <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
       <h3>All statistics/chances are visible in the side menu(in progress)</h3>
@@ -234,7 +235,8 @@ function App() {
         <p>Lifetime Rolls: {totRolls}</p>
       </div>
  
-        <Sidebar />
+        <Sidebar show={stats} setShow={setStats}/>
+        {stats&&<Statbar />}
 
     </>
   )

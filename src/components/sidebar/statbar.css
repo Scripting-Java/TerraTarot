@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+.statbar {
+    background-color: #30243d;
+    border: 2px solid #8b5cf6;
+    border-radius: 10px;
+    padding: 12px;
+    color: white;
+}
+
+.statbar table {
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier Prime';
+}
+
+.statbar th {
+    padding: 8px;
+    border: 2px solid #8b5cf6;
+    font-weight: 700;
+}
+
+.statbar td {
+    padding: 3px;
+    border: 1px solid #8b5cf6;
+    border-radius: 6px;
+}
