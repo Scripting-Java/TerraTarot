@@ -16,7 +16,7 @@ function Card({ card }: Card) {
                         <img src={card.image} className="cardIcon"/>
                     ):(null)}
                     <h1>{card.name}</h1>
-                    <p>{card.rarity}</p>
+                    <p className={`${card.rarity}`}>{card.rarity.toUpperCase()}</p>
                     {card.fusion!=null?(<p>Fusion Level: {card.fusion}</p>):(null)}
                     <div className="money">
                     <img src = {pumpkin} className="pumpkin"></img>
