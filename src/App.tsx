@@ -8,6 +8,8 @@ import { getRollCost, start, getIncomeCards } from './data/money'
 import formatMoney from './utils/moneyFormatter'
 import { fuseCards, canFuse } from './utils/fusion'
 import pumpkinImg from '../src/assets/pumpkin.png'
+import Sidebar from './components/sidebar/sidebar'
+
 
 function App() {
   const [slots, setSlots] = useState<(card | null)[]>(loadGame())
@@ -202,8 +204,8 @@ function App() {
       <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
       <h3>All statistics/chances are visible in the side menu(in progress)</h3>
       <div className='pumpkinImg'>
-      <img src={pumpkinImg} className='pumpkin'/>
-      <h2>{formatMoney(pumpkin)}</h2>
+        <img src={pumpkinImg} className='pumpkin' />
+        <h2>{formatMoney(pumpkin)}</h2>
       </div>
       <div>
         <button onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))}) Pumpkins</button>
@@ -225,10 +227,15 @@ function App() {
       ) : (
         <p>{totRolls - prevRolls} rolls were performed</p>)}
       <p>Pity: {rollNum}/50</p>
+      <div className='cards'>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
+      </div>
       <div>
         <p>Lifetime Rolls: {totRolls}</p>
       </div>
+ 
+        <Sidebar />
+
     </>
   )
 }

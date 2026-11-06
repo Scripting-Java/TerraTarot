@@ -9,3 +9,11 @@
     width: fit-content;
     margin: 0 auto;
 }
+
+body{
+    background-color: rgb(26, 23, 23);
+}
+
+.cards{
+    margin-left: 100px;
+}
