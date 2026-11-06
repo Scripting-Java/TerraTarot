@@ -1,0 +1,11 @@
+.pumpkinImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 16px;
+    background-color: rgb(248, 167, 120, 0.75);
+    border-radius: 20px;
+    width: fit-content;
+    margin: 0 auto;
+}

@@ -7,6 +7,7 @@ import handleRoll from './utils/handleRoll'
 import { getRollCost, start, getIncomeCards } from './data/money'
 import formatMoney from './utils/moneyFormatter'
 import { fuseCards, canFuse } from './utils/fusion'
+import pumpkinImg from '../src/assets/pumpkin.png'
 
 function App() {
   const [slots, setSlots] = useState<(card | null)[]>(loadGame())
@@ -200,8 +201,10 @@ function App() {
       <p>Roll spooky characters to make pumpkins</p>
       <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
       <h3>All statistics/chances are visible in the side menu(in progress)</h3>
-      <h2>Pumpkin: {formatMoney(pumpkin)}</h2>
-      <h2>Lifetime Rolls: {totRolls}</h2>
+      <div className='pumpkinImg'>
+      <img src={pumpkinImg} className='pumpkin'/>
+      <h2>{formatMoney(pumpkin)}</h2>
+      </div>
       <div>
         <button onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))}) Pumpkins</button>
         <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
@@ -223,7 +226,9 @@ function App() {
         <p>{totRolls - prevRolls} rolls were performed</p>)}
       <p>Pity: {rollNum}/50</p>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
-      <div></div>
+      <div>
+        <p>Lifetime Rolls: {totRolls}</p>
+      </div>
     </>
   )
 }
