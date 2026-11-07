@@ -108,7 +108,9 @@ Tentative Ideas:
 Show this in a table later I guess
  
 ## New Ideas/ Todolist
-- Info box for statistics and pull chances(at the end though)
-- Make the roll pity button bigger and more fancy like gacha games. Otherwise, it'll revert to a still customly styled fancy roll button!
+- Info box for statistics and pull chances(at the end though)[X]
+- Make the roll pity button bigger and more fancy like gacha games. Otherwise, it'll revert to a still customly styled fancy roll button![X]
 - Make a reset roll cost in shop once I make shop which will reset roll cost to default rates(1st roll rate) for $2.5k
-- Work on sidebar
+- Work on sidebar[X]
+- Make shop for sidebar
+- Card Art 1/23

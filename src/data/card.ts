@@ -1,4 +1,10 @@
 import skeletonImg from "../assets/CardIcons/Skeleton.png"
+import ghostImg from "../assets/CardIcons/Ghost.png"
+import zombieImg from "../assets/CardIcons/Zombie.png"
+import vampireImg from "../assets/CardIcons/Vampire.png"
+import witchImg from "../assets/CardIcons/Witch.png"
+import blackCatImg from "../assets/CardIcons/BlackCat.png"
+import batImg from "../assets/CardIcons/Bat.png"
 export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
 
 export interface card {
@@ -23,7 +29,7 @@ const ghost: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "",
+    image: ghostImg,
 }
 
 const zombie: card = {
@@ -31,7 +37,7 @@ const zombie: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "",
+    image: zombieImg,
 }
 
 const vampire: card = {
@@ -39,7 +45,7 @@ const vampire: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "",
+    image: vampireImg,
 }
 
 const witch: card = {
@@ -47,7 +53,7 @@ const witch: card = {
     rarity: "common",
     income: 1.1,
     cooldown: 1,
-    image: "",
+    image: witchImg,
 }
 
 const blackCat: card = {
@@ -55,7 +61,7 @@ const blackCat: card = {
     rarity: "common",
     income: 1.1,
     cooldown: 1,
-    image: "",
+    image: blackCatImg,
 }
 
 const bat: card = {
@@ -63,7 +69,7 @@ const bat: card = {
     rarity: "common",
     income: 1.2,
     cooldown: 1,
-    image: "",
+    image: batImg,
 }
 
 const commons: card[] = [skeleton,ghost,zombie,vampire,witch,blackCat,bat]
