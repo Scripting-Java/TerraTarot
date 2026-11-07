@@ -1,3 +1,4 @@
+import skeletonImg from "../assets/CardIcons/Skeleton.png"
 export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
 
 export interface card {
@@ -14,7 +15,7 @@ const skeleton: card = {
     rarity: "common",
     income: 1,
     cooldown: 1,
-    image: "",
+    image: skeletonImg,
 }
 
 const ghost: card = {

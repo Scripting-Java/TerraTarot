@@ -1,71 +1,84 @@
-.card{
+.card {
     border: 3px solid #8b5cf6;
     border-radius: 10px;
-    padding:10px;
-    width:195px;
+    padding: 10px;
+    width: 250px;
     min-height: 250px;
     box-sizing: border-box;
     text-align: center;
 }
 
-.card h1{
+.card h1 {
     color: rgb(39, 25, 25);
     font-weight: 200;
     background-color: #b399f0;
     border: 3px solid #f8a778;
     border-radius: 10px;
-    padding:10px;
+    padding: 8px;
     font-size: 30px;
     min-height: 40px;
+    margin-bottom: 2px;
+    margin-top:2px;
 }
 
-.pumpkin{
+.pumpkin {
     width: 32px;
-    height:32px;
+    height: 32px;
     margin: right 4px;
     align-items: center;
 }
 
-.money{
+.money {
     display: flex;
     align-items: right;
-    margin:4px;
+    margin: 4px;
     align-items: center;
     justify-content: center;
 }
 
-.common{
-    color:rgb(199, 196, 196);
+.common {
+    color: rgb(199, 196, 196);
     font-weight: 550;
     background-color: #2e146b;
     border-radius: 15px;
-    border:2px solid #f8a778;
+    border: 2px solid #f8a778;
 }
-.uncommon{
-    color:rgb(129, 231, 151);
+
+.uncommon {
+    color: rgb(129, 231, 151);
     font-weight: 550;
     background-color: #2e146b;
     border-radius: 15px;
-    border:2px solid #f8a778;
+    border: 2px solid #f8a778;
 }
-.rare{
-    color:rgb(140, 220, 245);
+
+.rare {
+    color: rgb(140, 220, 245);
     font-weight: 550;
     background-color: #2e146b;
     border-radius: 15px;
-    border:2px solid #f8a778;
+    border: 2px solid #f8a778;
 }
-.epic{
-    color:rgb(208, 125, 233);
+
+.epic {
+    color: rgb(208, 125, 233);
     font-weight: 550;
     background-color: #2e146b;
     border-radius: 15px;
-    border:2px solid #f8a778;
+    border: 2px solid #f8a778;
 }
-.legendary{
-    color:rgb(238, 177, 107);
+
+.legendary {
+    color: rgb(238, 177, 107);
     font-weight: 550;
     background-color: #2e146b;
     border-radius: 15px;
-    border:2px solid #f8a778;
+    border: 2px solid #f8a778;
+}
+
+.cardIcon {
+    width: 225px;
+    height: 225px;
+    object-fit: contain;
+    border-radius: 25px;
 }
