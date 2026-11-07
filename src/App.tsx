@@ -220,25 +220,28 @@ function App() {
         <h2>{formatMoney(pumpkin)}</h2>
       </div>
 
-      <details className='rollMenu'>
-        <summary>Roll Menu</summary>
-        <div>
-          <button className={rollNum >= 49 ? 'pity' : 'noPity'} onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))} Pumpkins)</button>
-          <button className={rollNum >= 49 ? 'pity' : 'noPity'} onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
-          <div className='rollCond'>
-            <button onClick={rollMax} className={rollNum >= 49 ? 'pity' : 'noPity'}>Roll Condition</button>
-            <details>
-              <summary className='condMenu'>Condition:</summary>
-              <button className='condMenu' onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollModeText(rollMode)}</button>
-              {rollMode === "count" || rollMode === "allCount" ? (
-                <input className='condInput' type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
-              ) : (null)}
-            </details>
+      <div className='actions'>
+        <details className='rollMenu'>
+          <summary>Roll Menu</summary>
+          <div>
+            <button className={rollNum >= 49 ? 'pity' : 'noPity'} onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))} Pumpkins)</button>
+            <button className={rollNum >= 49 ? 'pity' : 'noPity'} onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
+            <div className='rollCond'>
+              <button onClick={rollMax} className={rollNum >= 49 ? 'pity' : 'noPity'}>Roll Condition</button>
+              <details>
+                <summary className='condMenu'>Condition:</summary>
+                <button className='condMenu' onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollModeText(rollMode)}</button>
+                {rollMode === "count" || rollMode === "allCount" ? (
+                  <input className='condInput' type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
+                ) : (null)}
+              </details>
+            </div>
           </div>
-        </div>
-      </details>
+        </details>
 
-      <button className='fuse' onClick={fuse}>Fuse</button>
+        <button className='fuse' onClick={fuse}>Fuse</button>
+      </div>
+
       {rollMode === "count" || rollMode === "allCount" ? (
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
