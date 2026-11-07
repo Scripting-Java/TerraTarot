@@ -23,7 +23,7 @@ function App() {
   const [rollCount, setRollCount] = useState(1)
   const [prevRolls, setPrevRolls] = useState(0)
   const [stats, setStats] = useState(false)
-  
+
   function rollSlot() {
     const notPity = rollNum < 49
     setPumpkin(pumpkin - getRollCost(totRolls))
@@ -193,14 +193,14 @@ function App() {
     }
     setSlots(newSlots)
   }
-  function rollModeText(mode:string){
-    if(mode==="count")
+  function rollModeText(mode: string) {
+    if (mode === "count")
       return "Roll For This Many Times"
-    else if (mode==="max")
+    else if (mode === "max")
       return "Roll As Many Times As Possible"
-    else if (mode==="allCount")
+    else if (mode === "allCount")
       return "Roll This Amount Across All Slots"
-    else if (mode==="allMax")
+    else if (mode === "allMax")
       return "Roll As Many Times As Possible Across All Slots"
   }
 
@@ -219,36 +219,40 @@ function App() {
         <img src={pumpkinImg} className='pumpkin' />
         <h2>{formatMoney(pumpkin)}</h2>
       </div>
-      <div>
-        <button className={rollNum>=49 ? 'pity':'noPity'} onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))} Pumpkins)</button>
-        <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
-      </div>
-      <button onClick={fuse}>Fuse</button>
-      <div className='rollCond'>
-      <button onClick={rollMax}>Roll Condition</button>
-      <details>
-        <summary>Condition:</summary>
-        <button onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollModeText(rollMode)}</button>
-        {rollMode === "count" || rollMode === "allCount" ? (
-          <input type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
-        ) : (null)}
-      </details>
-      </div>
 
+      <details className='rollMenu'>
+        <summary>Roll Menu</summary>
+        <div>
+          <button className={rollNum >= 49 ? 'pity' : 'noPity'} onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))} Pumpkins)</button>
+          <button className={rollNum >= 49 ? 'pity' : 'noPity'} onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
+          <div className='rollCond'>
+            <button onClick={rollMax} className={rollNum >= 49 ? 'pity' : 'noPity'}>Roll Condition</button>
+            <details>
+              <summary className='condMenu'>Condition:</summary>
+              <button className='condMenu' onClick={() => { setRollMode(rollModes[rollCounter % 4]), setRollCounter(rollCounter + 1), setPrevRolls(totRolls) }}>{rollModeText(rollMode)}</button>
+              {rollMode === "count" || rollMode === "allCount" ? (
+                <input className='condInput' type="number" value={rollCount} onChange={(n) => { setRollCount(Number(n.target.value)), setPrevRolls(totRolls) }} />
+              ) : (null)}
+            </details>
+          </div>
+        </div>
+      </details>
+
+      <button className='fuse' onClick={fuse}>Fuse</button>
       {rollMode === "count" || rollMode === "allCount" ? (
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
         <p>{totRolls - prevRolls} rolls were performed</p>)}
-      <p>Pity: {rollNum+1}/50</p>
+      <p>Pity: {rollNum + 1}/50</p>
       <div className='cards'>
-      <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
+        <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       </div>
       <div>
         <p>Lifetime Rolls: {totRolls}</p>
       </div>
- 
-        <Sidebar show={stats} setShow={setStats}/>
-        {stats&&<Statbar />}
+
+      <Sidebar show={stats} setShow={setStats} />
+      {stats && <Statbar />}
 
     </>
   )
