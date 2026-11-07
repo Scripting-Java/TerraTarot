@@ -20,7 +20,7 @@ function Sidebar({setShow}: Sidebar){
         <div className="sidebar">
             <button className="button" onClick={()=>setShow(prev=>!prev)}><ChartNoAxesColumn size={24}></ChartNoAxesColumn></button>
             <button className="button" onClick ={()=>toggle("shop")}><ShoppingBag size={24}></ShoppingBag></button>
-            {tab==="shop"&&<Shopbar />}
+            {tab==="shop"&&<Shopbar onClose={()=>setTab("none")}/>}
         </div>
     )
 

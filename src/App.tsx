@@ -23,6 +23,7 @@ function App() {
   const [rollCount, setRollCount] = useState(1)
   const [prevRolls, setPrevRolls] = useState(0)
   const [stats, setStats] = useState(false)
+  const [shop,setShop] = useState(false)
 
   function rollSlot() {
     const notPity = rollNum < 49
