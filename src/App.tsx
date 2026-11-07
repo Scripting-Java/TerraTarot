@@ -220,6 +220,11 @@ function App() {
         <h2>{formatMoney(pumpkin)}</h2>
       </div>
 
+      <div className='displays'>
+        <p className={rollNum >= 49 ? 'pityP' : 'noPityP'}>Pity: {rollNum + 1}/50</p>
+        <p className={rollNum >= 49 ? 'pityP' : 'noPityP'}>Lifetime Rolls: {totRolls}</p>
+      </div>
+
       <div className='actions'>
         <details className='rollMenu'>
           <summary>Roll Menu</summary>
@@ -246,13 +251,11 @@ function App() {
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
         <p>{totRolls - prevRolls} rolls were performed</p>)}
-      <p>Pity: {rollNum + 1}/50</p>
       <div className='cards'>
         <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       </div>
-      <div>
-        <p>Lifetime Rolls: {totRolls}</p>
-      </div>
+
+
 
       <Sidebar show={stats} setShow={setStats} />
       {stats && <Statbar />}
