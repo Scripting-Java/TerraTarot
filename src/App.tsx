@@ -212,15 +212,15 @@ function App() {
   return (
     <>
       <h1 className='title'>Terra Tarot</h1>
-      <p>Roll spooky characters to make pumpkins</p>
+      <h2>Roll spooky characters for pumpkins</h2>
       <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
-      <h3>All statistics/chances are visible in the side menu(in progress)</h3>
+      <h3>Click on the statistics button on the sidebar to view chances</h3>
       <div className='pumpkinImg'>
         <img src={pumpkinImg} className='pumpkin' />
         <h2>{formatMoney(pumpkin)}</h2>
       </div>
       <div>
-        <button onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))}) Pumpkins</button>
+        <button className={rollNum>=49 ? 'pity':'noPity'} onClick={rollSlot} disabled={pumpkin < getRollCost(totRolls)}>Roll (Cost:{formatMoney(getRollCost(totRolls))} Pumpkins)</button>
         <button onClick={rollAll} disabled={pumpkin < (getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}>Roll All (Cost: {formatMoney(getRollCost(totRolls) + getRollCost(totRolls + 1) + getRollCost(totRolls + 2) + getRollCost(totRolls + 3))}) Pumpkins</button>
       </div>
       <button onClick={fuse}>Fuse</button>
@@ -239,7 +239,7 @@ function App() {
         <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
       ) : (
         <p>{totRolls - prevRolls} rolls were performed</p>)}
-      <p>Pity: {rollNum}/50</p>
+      <p>Pity: {rollNum+1}/50</p>
       <div className='cards'>
       <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       </div>
