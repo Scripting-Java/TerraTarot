@@ -215,14 +215,15 @@ function App() {
       <h2>Roll spooky characters for pumpkins</h2>
       <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
       <h3>Click on the statistics button on the sidebar to view chances</h3>
-      <div className='pumpkinImg'>
-        <img src={pumpkinImg} className='pumpkin' />
-        <h2>{formatMoney(pumpkin)}</h2>
-      </div>
 
       <div className='displays'>
         <p className={rollNum >= 49 ? 'pityP' : 'noPityP'}>Pity: {rollNum + 1}/50</p>
         <p className={rollNum >= 49 ? 'pityP' : 'noPityP'}>Lifetime Rolls: {totRolls}</p>
+      </div>
+
+      <div className='pumpkinImg'>
+        <img src={pumpkinImg} className='pumpkin' />
+        <h2 className='pumpkinDisplay'>{formatMoney(pumpkin)}</h2>
       </div>
 
       <div className='actions'>

@@ -11,6 +11,16 @@
     border-radius: 20px;
     width: fit-content;
     margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pumpkinDisplay{
+    font-family: 'Akt';
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
 
 body {
