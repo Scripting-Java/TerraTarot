@@ -12,6 +12,13 @@ import viperImg from "../assets/CardIcons/Viper.png"
 import vinesImg from "../assets/CardIcons/Vines.png"
 import drinkMeImg from "../assets/CardIcons/DrinkMe.png"
 import eatMeImg from "../assets/CardIcons/EatMe.png"
+import frankensteinImg from "../assets/CardIcons/Frankenstein.png"
+import mummyImg from "../assets/CardIcons/Mummy.png"
+import hauntedImg from "../assets/CardIcons/HauntedHouse.png"
+import dinosaurimg from "../assets/CardIcons/Dinosaur.png"
+import sharkImg from '../assets/CardIcons/Shark.png'
+
+
 export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
 
 export interface card {
@@ -144,7 +151,7 @@ const frankenstein: card = {
     rarity: "rare",
     income: 12,
     cooldown: 1,
-    image: ""
+    image: frankensteinImg,
 }
 
 const mummy: card = {
@@ -152,7 +159,7 @@ const mummy: card = {
     rarity: "rare",
     income: 15,
     cooldown: 1,
-    image: ""
+    image: mummyImg,
 }
 
 const hauntedHouse: card = {
@@ -160,7 +167,7 @@ const hauntedHouse: card = {
     rarity: "rare",
     income: 18,
     cooldown: 1,
-    image: ""
+    image: hauntedImg
 }
 
 const dinosaur: card = {
@@ -168,7 +175,7 @@ const dinosaur: card = {
     rarity: "rare",
     income: 18,
     cooldown: 1,
-    image: ""
+    image: dinosaurimg
 }
 
 const shark: card = {
@@ -176,7 +183,7 @@ const shark: card = {
     rarity: "rare",
     income: 19,
     cooldown: 1,
-    image: ""
+    image: sharkImg
 }
 
 const rare: card[] = [frankenstein,mummy,hauntedHouse, dinosaur, shark]
@@ -207,15 +214,8 @@ const darkEye: card = {
     image: ""
 }
 
-const dracula: card = {
-    name: "Dracula",
-    rarity: "legendary",
-    income: 55,
-    cooldown: 1,
-    image: ""
-}
 
-const legendary: card[] = [darkEye, dracula]
+const legendary: card[] = [darkEye]
 
 export const cards: card[] = [...commons,...uncommon,...rare,...epic,...legendary]
 
