@@ -10,6 +10,7 @@ import { fuseCards, canFuse } from './utils/fusion'
 import pumpkinImg from '../src/assets/pumpkin.png'
 import Sidebar from './components/sidebar/sidebar'
 import Statbar from './components/sidebar/Statbar'
+import Shopbar from "./components/sidebar/Shopbar"
 
 function App() {
   const [slots, setSlots] = useState<(card | null)[]>(loadGame())
@@ -23,7 +24,15 @@ function App() {
   const [rollCount, setRollCount] = useState(1)
   const [prevRolls, setPrevRolls] = useState(0)
   const [stats, setStats] = useState(false)
-  const [shop,setShop] = useState(false)
+  const[shop, setShop] = useState(false)
+  
+  const [pie, setPie] = useState(false)
+  const [basket, setBasket] = useState(false)
+  let pumpkinMult = 1;
+  if(pie)
+    pumpkinMult+=0.1
+  if(basket)
+    pumpkinMult+=0.15
 
   function rollSlot() {
     const notPity = rollNum < 49
@@ -204,11 +213,32 @@ function App() {
     else if (mode === "allMax")
       return "Roll As Many Times As Possible Across All Slots"
   }
+  function buyPie(){
+    if(pumpkin<1500||pie) 
+      return
+    setPumpkin(prev=>prev-1500)
+    setPie(true)
+  }
+  function buyBasket(){
+    if(pumpkin<2000||basket) 
+      return
+    setPumpkin(prev=>prev-2000)
+    setBasket(true)
+  }
+  function reset(){
+    if(pumpkin<2500)
+      return
+    setPumpkin(prev=>prev-2500)
+    setTotRolls(0)
+    setPrevRolls(0)
+  }
+
 
   useEffect(() => {
-    const int = setInterval(() => { setPumpkin(prev => prev + getIncomeCards(slots)) }, 1000)
+    const income = getIncomeCards(slots)*pumpkinMult
+    const int = setInterval(() => { setPumpkin(prev => prev + income) }, 1000)
     return () => clearInterval(int)
-  }, [slots])
+  }, [slots, pumpkinMult])
 
   return (
     <>
@@ -259,8 +289,9 @@ function App() {
 
 
 
-      <Sidebar show={stats} setShow={setStats} />
+      <Sidebar show={stats} setShow={setStats} setShop={setShop}/>
       {stats && <Statbar />}
+      {shop && <Shopbar onClose={()=>setShop(false)} pumpkin={pumpkin} pie={pie} basket={basket} buyPie={buyPie} buyBasket={buyBasket} reset={reset}/>}
 
     </>
   )

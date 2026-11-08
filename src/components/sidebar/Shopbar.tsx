@@ -1,14 +1,21 @@
 import './shopbar.css'
 import { X } from 'lucide-react'
-import pumpkin from "./../../assets/pumpkin.png"
+import pumpkinImg from "./../../assets/pumpkin.png"
 import pumpkinPie from "./../../assets/ShopIcons/PumpkinPie.png"
 import trick from "./../../assets/ShopIcons/TrickOrTreatBasket.png"
-import reset from "./../../assets/ShopIcons/ResetRoll.png"
+import resetImg from "./../../assets/ShopIcons/ResetRoll.png"
+import formatMoney from '../../utils/moneyFormatter'
 interface ShopBar {
     onClose: () => void,
+    pumpkin: number,
+    pie: boolean,
+    basket: boolean,
+    buyPie: () => void,
+    buyBasket: () => void,
+    reset: () => void,
 }
 
-function Shopbar({ onClose }: ShopBar) {
+function Shopbar({ onClose, pumpkin, pie, basket, buyPie, buyBasket, reset }: ShopBar) {
     return (
         <div className='shop'>
             <div className='topBar'>
@@ -27,10 +34,10 @@ function Shopbar({ onClose }: ShopBar) {
                         <p>10% Extra Pumpkins</p>
                         <div className='cost'>
                             <p>Cost: 1500</p>
-                            <img src={pumpkin}></img>
+                            <img src={pumpkinImg}></img>
                         </div>
                     </details>
-                    <button>Buy</button>
+                    <button onClick={buyPie} disabled={pumpkin<1500||pie}>{pie? "Purchased":"Buy"}</button>
                 </div>
                 <div className="item">
                     <details>
@@ -41,25 +48,25 @@ function Shopbar({ onClose }: ShopBar) {
                         <p>15% Extra Pumpkins</p>
                         <div className='cost'>
                             <p>Cost: 2000</p>
-                            <img src={pumpkin}></img>
+                            <img src={pumpkinImg}></img>
                         </div>
                     </details>
-                    <button>Buy</button>
+                    <button onClick={buyBasket} disabled={pumpkin<2000||basket}>{basket?"Purchased":"Buy"}</button>
                 </div>
                 <div className="item">
                     <details>
                         <summary className='itemName'>
                             <h2>Roll Reset</h2>
-                            <img className='iconImg' src={reset}></img>
+                            <img className='iconImg' src={resetImg}></img>
                         </summary>
                         <p>Reset your lifetime rolls</p>
                         <p>(Makes all rolls cheaper)</p>
                         <div className='cost'>
                             <p>Cost: 2500</p>
-                            <img src={pumpkin}></img>
+                            <img src={pumpkinImg}></img>
                         </div>
                     </details>
-                    <button>Buy</button>
+                    <button onClick={reset} disabled={pumpkin<2500}>{pumpkin<2500 ? `You need ${formatMoney(2500-pumpkin)} more pumpkins` : "Buy"}</button>
                 </div>
             </div>
         </div>

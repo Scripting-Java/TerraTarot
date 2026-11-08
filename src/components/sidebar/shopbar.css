@@ -13,7 +13,6 @@
     border: 2px solid orange;
     position: fixed;
     left:500px;
-    bottom:-120px;
 }
 
 .shop h1 {
@@ -79,6 +78,7 @@
     font-family: 'Akt';
     margin: 0 auto;
     background-color: rgb(238, 193, 108);
+    color:white;
 }
 
 .item p {
