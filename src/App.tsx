@@ -24,15 +24,15 @@ function App() {
   const [rollCount, setRollCount] = useState(1)
   const [prevRolls, setPrevRolls] = useState(0)
   const [stats, setStats] = useState(false)
-  const[shop, setShop] = useState(false)
-  
+  const [shop, setShop] = useState(false)
+
   const [pie, setPie] = useState(false)
   const [basket, setBasket] = useState(false)
   let pumpkinMult = 1;
-  if(pie)
-    pumpkinMult+=0.1
-  if(basket)
-    pumpkinMult+=0.15
+  if (pie)
+    pumpkinMult += 0.1
+  if (basket)
+    pumpkinMult += 0.15
 
   function rollSlot() {
     const notPity = rollNum < 49
@@ -213,29 +213,29 @@ function App() {
     else if (mode === "allMax")
       return "Roll As Many Times As Possible Across All Slots"
   }
-  function buyPie(){
-    if(pumpkin<1500||pie) 
+  function buyPie() {
+    if (pumpkin < 1500 || pie)
       return
-    setPumpkin(prev=>prev-1500)
+    setPumpkin(prev => prev - 1500)
     setPie(true)
   }
-  function buyBasket(){
-    if(pumpkin<2000||basket) 
+  function buyBasket() {
+    if (pumpkin < 2000 || basket)
       return
-    setPumpkin(prev=>prev-2000)
+    setPumpkin(prev => prev - 2000)
     setBasket(true)
   }
-  function reset(){
-    if(pumpkin<2500)
+  function reset() {
+    if (pumpkin < 2500)
       return
-    setPumpkin(prev=>prev-2500)
+    setPumpkin(prev => prev - 2500)
     setTotRolls(0)
     setPrevRolls(0)
   }
 
 
   useEffect(() => {
-    const income = getIncomeCards(slots)*pumpkinMult
+    const income = getIncomeCards(slots) * pumpkinMult
     const int = setInterval(() => { setPumpkin(prev => prev + income) }, 1000)
     return () => clearInterval(int)
   }, [slots, pumpkinMult])
@@ -254,7 +254,10 @@ function App() {
 
       <div className='pumpkinImg'>
         <img src={pumpkinImg} className='pumpkin' />
-        <h2 className='pumpkinDisplay'>{formatMoney(pumpkin)}</h2>
+        <div>
+          <h2 className='pumpkinDisplay'>{formatMoney(pumpkin)}</h2>
+          <h2 className='pumpkinSubDisplay'>{formatMoney(getIncomeCards(slots) * pumpkinMult)}/second</h2>
+        </div>
       </div>
 
       <div className='actions'>
@@ -273,25 +276,26 @@ function App() {
                 ) : (null)}
               </details>
             </div>
+            <details>
+              <summary>Roll History:</summary>
+              {rollMode === "count" || rollMode === "allCount" ? (<p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>) : (<p>{totRolls - prevRolls} rolls were performed</p>)}
+            </details>
           </div>
         </details>
 
         <button className='fuse' onClick={fuse}>Fuse</button>
       </div>
 
-      {rollMode === "count" || rollMode === "allCount" ? (
-        <p>{totRolls - prevRolls}/{rollCount} rolls were performed</p>
-      ) : (
-        <p>{totRolls - prevRolls} rolls were performed</p>)}
+
       <div className='cards'>
         <CardSlot slots={slots} slot={slotIndex} setSlot={setSlotIndex}></CardSlot>
       </div>
 
 
 
-      <Sidebar show={stats} setShow={setStats} setShop={setShop}/>
+      <Sidebar show={stats} setShow={setStats} setShop={setShop} />
       {stats && <Statbar />}
-      {shop && <Shopbar onClose={()=>setShop(false)} pumpkin={pumpkin} pie={pie} basket={basket} buyPie={buyPie} buyBasket={buyBasket} reset={reset}/>}
+      {shop && <Shopbar onClose={() => setShop(false)} pumpkin={pumpkin} pie={pie} basket={basket} buyPie={buyPie} buyBasket={buyBasket} reset={reset} />}
 
     </>
   )

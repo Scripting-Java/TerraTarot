@@ -126,6 +126,7 @@ body {
     margin: auto;
     font-family: 'Akt';
     font-size: 15px;
+    cursor: pointer;
 }
 
 .condInput {
@@ -194,4 +195,10 @@ body {
     align-items: center;
     align-content: center;
     margin: 10px auto 0px;
+}
+
+.pumpkinSubDisplay{
+    font-family: 'Akt';
+    font-size: 14px;
+    margin-top:0;
 }
