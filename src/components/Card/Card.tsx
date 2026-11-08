@@ -3,6 +3,7 @@ import "./card.css"
 import formatMoney from "../../utils/moneyFormatter"
 import { getIncome } from "../../data/money"
 import pumpkin from "../../assets/pumpkin.png"
+import noCard from "../../assets/noCard.png"
 interface Card {
     card: card | null
 }
@@ -25,7 +26,8 @@ function Card({ card }: Card) {
                 </div>
             ) : (
                 <div>
-                    Roll For A Card!
+                    <p className="noCard">Roll For A Card!</p>
+                    <img className='cardIcon' src = {noCard}/>
                 </div>
             )}
         </div>

@@ -82,3 +82,11 @@
     object-fit: contain;
     border-radius: 25px;
 }
+
+.noCard{
+    color: white;
+    padding:10px;
+    background-color: #b399f0;
+    border: 3px solid #f8a778;
+    border-radius: 10px;
+}
