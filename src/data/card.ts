@@ -17,7 +17,9 @@ import mummyImg from "../assets/CardIcons/Mummy.png"
 import hauntedImg from "../assets/CardIcons/HauntedHouse.png"
 import dinosaurimg from "../assets/CardIcons/Dinosaur.png"
 import sharkImg from '../assets/CardIcons/Shark.png'
-
+import candyImg from "../assets/CardIcons/Candy.png"
+import inflatableImg from '../assets/CardIcons/Inflatable.png'
+import darkEyeImg from "../assets/CardIcons/DarkEye.png"
 
 export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
 
@@ -193,7 +195,7 @@ const candy: card = {
     rarity: "epic",
     income: 25,
     cooldown: 1,
-    image: ""
+    image: candyImg
 }
 
 const inflatable: card = {
@@ -201,7 +203,7 @@ const inflatable: card = {
     rarity: "epic",
     income: 27,
     cooldown: 1,
-    image: ""
+    image: inflatableImg
 }
 
 const epic: card[] = [candy,inflatable]
@@ -211,7 +213,7 @@ const darkEye: card = {
     rarity: "legendary",
     income: 50,
     cooldown: 1,
-    image: ""
+    image: darkEyeImg
 }
 
 
