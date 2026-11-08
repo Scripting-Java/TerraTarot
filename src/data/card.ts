@@ -5,6 +5,13 @@ import vampireImg from "../assets/CardIcons/Vampire.png"
 import witchImg from "../assets/CardIcons/Witch.png"
 import blackCatImg from "../assets/CardIcons/BlackCat.png"
 import batImg from "../assets/CardIcons/Bat.png"
+import werewolfImg from "../assets/CardIcons/Werewolf.png"
+import jackImg from "../assets/CardIcons/JackOLantern.png"
+import puppetImg from "../assets/CardIcons/Puppet.png"
+import viperImg from "../assets/CardIcons/Viper.png"
+import vinesImg from "../assets/CardIcons/Vines.png"
+import drinkMeImg from "../assets/CardIcons/DrinkMe.png"
+import eatMeImg from "../assets/CardIcons/EatMe.png"
 export type Rarity = "common" | "uncommon" | "rare" |"epic"| "legendary"
 
 export interface card {
@@ -79,7 +86,7 @@ const werewolf: card = {
     rarity: "uncommon",
     income: 5,
     cooldown: 1,
-    image: ""
+    image: werewolfImg,
 }
 
 const jackolantern: card = {
@@ -87,7 +94,7 @@ const jackolantern: card = {
     rarity: "uncommon",
     income: 6,
     cooldown: 1,
-    image: ""
+    image: jackImg,
 }
 
 const puppet: card = {
@@ -95,7 +102,7 @@ const puppet: card = {
     rarity: "uncommon",
     income:6 ,
     cooldown: 1,
-    image: ""
+    image: puppetImg,
 }
 
 const viper: card = {
@@ -103,7 +110,7 @@ const viper: card = {
     rarity: "uncommon",
     income: 6,
     cooldown: 1,
-    image: ""
+    image: viperImg,
 }
 
 const vines: card = {
@@ -111,7 +118,7 @@ const vines: card = {
     rarity: "uncommon",
     income: 7,
     cooldown: 1,
-    image: ""
+    image: vinesImg
 }
 
 const drinkMe: card = {
@@ -119,7 +126,7 @@ const drinkMe: card = {
     rarity: "uncommon",
     income: 7,
     cooldown: 1,
-    image: ""
+    image: drinkMeImg,
 }
 
 const eatMe: card = {
@@ -127,7 +134,7 @@ const eatMe: card = {
     rarity: "uncommon",
     income: 7,
     cooldown: 1,
-    image: ""
+    image: eatMeImg,
 }
 
 const uncommon: card[] = [werewolf,jackolantern,puppet,viper,vines, drinkMe, eatMe]
