@@ -243,7 +243,7 @@ function App() {
   return (
     <>
       <h1 className='title'>Terra Tarot</h1>
-      <h2>Roll spooky characters for pumpkins</h2>
+      <h2 className='title2'>Roll spooky characters for pumpkins</h2>
 
 
       <div className='displays'>
@@ -296,10 +296,10 @@ function App() {
       {stats && <Statbar />}
       {shop && <Shopbar onClose={() => setShop(false)} pumpkin={pumpkin} pie={pie} basket={basket} buyPie={buyPie} buyBasket={buyBasket} reset={reset} />}
 
-      <details>
+      <details className='disclaimers'>
         <summary>Disclaimers</summary>
-        <h2>This game DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
-        <h2>Click on the statistics button on the sidebar to view chances</h2>
+        <h2 className='disclaim'>THIS GAME DOES NOT ENDORSE GAMBLING IN ANY WAY</h2>
+        <h2 className='disclaim'>Click on the statistics button on the sidebar to view chances</h2>
       </details>
     </>
   )
