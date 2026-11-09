@@ -1,4 +1,4 @@
-import Card from "../Card/card";
+import Cards from "../Card/Card";
 import type { card } from "../../data/card";
 import "./cardSlot.css"
 interface cardSlot {
@@ -11,16 +11,16 @@ function CardSlot({ slots, slot, setSlot }: cardSlot) {
     return (
         <div className="slots">
             <div onClick={() => setSlot(0)} className={slot === 0 ? "selected" : "slot"}>
-                <Card card={slots[0]}></Card>
+                <Cards card={slots[0]}></Cards>
             </div>
             <div onClick={() => setSlot(1)} className={slot === 1 ? "selected" : "slot"}>
-                <Card card={slots[1]}></Card>
+                <Cards card={slots[1]}></Cards>
             </div>
             <div onClick={() => setSlot(2)} className={slot === 2 ? "selected" : "slot"}>
-                <Card card={slots[2]}></Card>
+                <Cards card={slots[2]}></Cards>
             </div>
             <div onClick={() => setSlot(3)} className={slot === 3 ? "selected" : "slot"}>
-                <Card card={slots[3]}></Card>
+                <Cards card={slots[3]}></Cards>
             </div>
         </div>
     )

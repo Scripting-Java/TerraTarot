@@ -8,7 +8,7 @@ interface Card {
     card: card | null
 }
 
-function Card({ card }: Card) {
+function Cards({ card }: Card) {
     return (
         <div className="card">
             {card ? (
@@ -35,4 +35,4 @@ function Card({ card }: Card) {
     )
 }
 
-export default Card
+export default Cards
