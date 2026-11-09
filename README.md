@@ -1,6 +1,9 @@
 # TerraTarot
 Inspired by tarot cards(so like fortune telling) and by the halloween theme of this week. You collect halloween themed cards to earn more pumpkins, upgrade your pumpkin production, fuse your cards, and aim to get a full set of fusion level 10 legendaries(Dark eye).
 
+The web version(hosted on github pages) can be accessed here:
+https://scripting-java.github.io/TerraTarot/
+
 It's a browser based idle game except you're not in control of your production as you have to keep rolling for good cards.
 
 ## Disclaimers:
