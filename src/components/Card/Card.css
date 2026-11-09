@@ -84,9 +84,10 @@
 }
 
 .noCard{
-    color: white;
+    color: rgb(0, 0, 0);
     padding:10px;
     background-color: #b399f0;
     border: 3px solid #f8a778;
     border-radius: 10px;
+    margin-bottom: 10px;
 }

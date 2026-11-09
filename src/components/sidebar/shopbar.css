@@ -12,7 +12,7 @@
     border-radius: 20px;
     border: 2px solid orange;
     position: fixed;
-    left:500px;
+    left:25%;
 }
 
 .shop h1 {
@@ -79,6 +79,10 @@
     margin: 0 auto;
     background-color: rgb(238, 193, 108);
     color:white;
+}
+
+.item button:disabled{
+   opacity: 0.5;
 }
 
 .item p {

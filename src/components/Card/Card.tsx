@@ -28,6 +28,7 @@ function Card({ card }: Card) {
                 <div>
                     <p className="noCard">Roll For A Card!</p>
                     <img className='cardIcon' src = {noCard}/>
+                    <p className="common">???</p>
                 </div>
             )}
         </div>
