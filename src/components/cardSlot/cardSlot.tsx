@@ -1,4 +1,4 @@
-import Card from "../Card/card";
+import Card from "../Card/Card";
 import type { card } from "../../data/card";
 import "./cardSlot.css"
 interface cardSlot {
