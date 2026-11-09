@@ -1,5 +1,5 @@
 import type { card } from "../../data/card"
-import "./card.css"
+import "./Card.css"
 import formatMoney from "../../utils/moneyFormatter"
 import { getIncome } from "../../data/money"
 import pumpkin from "../../assets/pumpkin.png"
